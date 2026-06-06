@@ -250,6 +250,18 @@
 
   .btn-directions:hover { background: rgba(201,168,76,0.22); border-color: #c9a84c; }
 
+  .loc-hint {
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    margin-top: -4px;
+    line-height: 1.4;
+  }
+
+  .loc-hint strong {
+    color: rgba(201,168,76,0.7);
+  }
+
   .paw-footer {
     margin-top: 28px;
     font-size: 1.4rem;
@@ -296,6 +308,7 @@
       <span class="btn-icon" id="btn-loc-icon">📍</span>
       <span id="btn-loc-label">Enviar mi ubicación</span>
     </button>
+    <p class="loc-hint" id="loc-hint">Si el navegador pregunta, elige <strong>Ubicación exacta</strong></p>
 
     <a class="btn btn-whatsapp" id="btn-send-loc" style="display:none;" href="#" target="_blank">
       <span class="btn-icon">✅</span>
@@ -352,6 +365,7 @@
       bdayKey: "Nació", bdayVal: "05/Ago/2013",
       sexKey: "Sexo", sexVal: "Macho esterilizado",
       homeKey: "Casa",
+      locHint: "Si el navegador pregunta, elige Ubicación exacta",
       directionsLabel: "Cómo llegar"
     },
     en: {
@@ -370,6 +384,7 @@
       bdayKey: "Born", bdayVal: "05/Aug/2013",
       sexKey: "Sex", sexVal: "Neutered male",
       homeKey: "Home",
+      locHint: "If asked, choose Precise location",
       directionsLabel: "Get directions"
     },
     fr: {
@@ -388,6 +403,7 @@
       bdayKey: "Né le", bdayVal: "05/Aoû/2013",
       sexKey: "Sexe", sexVal: "Mâle castré",
       homeKey: "Maison",
+      locHint: "Si demandé, choisis Position précise",
       directionsLabel: "Itinéraire"
     },
     it: {
@@ -406,6 +422,7 @@
       bdayKey: "Nato il", bdayVal: "05/Ago/2013",
       sexKey: "Sesso", sexVal: "Maschio castrato",
       homeKey: "Casa",
+      locHint: "Se richiesto, scegli Posizione precisa",
       directionsLabel: "Come arrivare"
     }
   };
@@ -447,12 +464,13 @@
     const btn = document.getElementById('btn-location');
     const label = document.getElementById('btn-loc-label');
     const icon = document.getElementById('btn-loc-icon');
+    const hint = document.getElementById('loc-hint');
     const t = translations[currentLang];
 
-    if (locCoords) {
-      document.getElementById('btn-send-loc').style.display = 'flex';
-      return;
-    }
+    // Reset state to always get a fresh location
+    locCoords = null;
+    btn.classList.remove('success', 'denied', 'loading');
+    document.getElementById('btn-send-loc').style.display = 'none';
 
     btn.classList.add('loading');
     icon.textContent = '⏳';
@@ -476,6 +494,7 @@
         btn.classList.add('success');
         icon.textContent = '✅';
         label.textContent = translations[currentLang].locReady;
+        if (hint) hint.style.display = 'none';
 
         const mapsLink = `https://maps.google.com/?q=${locCoords.lat},${locCoords.lng}`;
         const fullMsg = `${translations[currentLang].waMsg}%0A%0A%F0%9F%93%8D%20${encodeURIComponent(mapsLink)}`;
@@ -490,7 +509,7 @@
         icon.textContent = '❌';
         label.textContent = translations[currentLang].locDenied;
       },
-      { timeout: 10000, enableHighAccuracy: true }
+      { timeout: 10000, enableHighAccuracy: true, maximumAge: 0 }
     );
   }
 </script>
