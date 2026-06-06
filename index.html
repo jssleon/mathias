@@ -151,6 +151,19 @@
     gap: 12px;
   }
 
+  .buttons-row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .buttons-row .btn {
+    flex: 1;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 10px;
+    font-size: 0.95rem;
+  }
+
   .btn {
     display: flex;
     align-items: center;
@@ -324,21 +337,17 @@
   </div>
 
   <div class="buttons">
-    <a class="btn btn-call" href="tel:+5219841765271">
-      <span class="btn-icon">📞</span>
-      <div class="btn-text">
-        <span id="btn-call-label">Llamar ahora</span>
-        <small>+52 984-176-5271</small>
-      </div>
-    </a>
+    <div class="buttons-row">
+      <a class="btn btn-call" href="tel:+5219841765271">
+        <span class="btn-icon">📞</span>
+        <span id="btn-call-label">Llamar</span>
+      </a>
 
-    <a class="btn btn-whatsapp" href="https://wa.me/529841765271?text=Hola%2C%20encontr%C3%A9%20a%20Mathias%20%F0%9F%90%BE">
-      <span class="btn-icon">💬</span>
-      <div class="btn-text">
-        <span id="btn-wa-label">Enviar WhatsApp</span>
-        <small id="btn-wa-sub">Mensaje directo</small>
-      </div>
-    </a>
+      <a class="btn btn-whatsapp" href="https://wa.me/529841765271?text=Hola%2C%20encontr%C3%A9%20a%20Mathias%20%F0%9F%90%BE">
+        <span class="btn-icon">💬</span>
+        <span id="btn-wa-label">WhatsApp</span>
+      </a>
+    </div>
 
     <button class="btn btn-location" id="btn-location" onclick="sendLocation()">
       <span class="btn-icon" id="btn-loc-icon">📍</span>
@@ -382,8 +391,8 @@
     es: {
       headline: "¡Me encontraste!",
       message: "Me perdí y mi familia me está buscando.<br>Por favor contáctalos, te lo agradecerán <strong>muchísimo</strong>. 🙏",
-      call: "Llamar ahora",
-      wa: "Enviar WhatsApp",
+      call: "Llamar",
+      wa: "WhatsApp",
       waSub: "Mensaje directo",
       waMsg: "Hola%2C%20encontr%C3%A9%20a%20Mathias%20%F0%9F%90%BE",
       loc: "Enviar mi ubicación",
@@ -403,8 +412,8 @@
     en: {
       headline: "You found me!",
       message: "I'm lost and my family is looking for me.<br>Please contact them, they will be <strong>so grateful</strong>. 🙏",
-      call: "Call now",
-      wa: "Send WhatsApp",
+      call: "Call",
+      wa: "WhatsApp",
       waSub: "Direct message",
       waMsg: "Hi%2C%20I%20found%20Mathias%20%F0%9F%90%BE",
       loc: "Send my location",
@@ -423,8 +432,8 @@
     fr: {
       headline: "Tu m'as trouvé !",
       message: "Je suis perdu et ma famille me cherche.<br>Contacte-les s'il te plaît, ils t'en seront <strong>très reconnaissants</strong>. 🙏",
-      call: "Appeler maintenant",
-      wa: "Envoyer WhatsApp",
+      call: "Appeler",
+      wa: "WhatsApp",
       waSub: "Message direct",
       waMsg: "Bonjour%2C%20j%27ai%20trouv%C3%A9%20Mathias%20%F0%9F%90%BE",
       loc: "Envoyer ma position",
@@ -443,8 +452,8 @@
     it: {
       headline: "Mi hai trovato!",
       message: "Mi sono perso e la mia famiglia mi sta cercando.<br>Per favore contattali, ti saranno <strong>moltissimo grati</strong>. 🙏",
-      call: "Chiama adesso",
-      wa: "Invia WhatsApp",
+      call: "Chiama",
+      wa: "WhatsApp",
       waSub: "Messaggio diretto",
       waMsg: "Ciao%2C%20ho%20trovato%20Mathias%20%F0%9F%90%BE",
       loc: "Invia la mia posizione",
