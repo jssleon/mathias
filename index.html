@@ -279,6 +279,7 @@
   .pet-val {
     color: rgba(255,255,255,0.85);
     font-weight: 400;
+    text-align: left;
   }
 
   .dog-photo {
@@ -303,10 +304,10 @@
 <body>
 
 <div class="lang-bar">
-  <button class="lang-btn active" onclick="setLang('es', this)">🇲🇽 <span class="lang-label">México <em>ES</em></span></button>
-  <button class="lang-btn" onclick="setLang('en', this)">🇺🇸 <span class="lang-label">USA <em>EN</em></span></button>
-  <button class="lang-btn" onclick="setLang('fr', this)">🇫🇷 <span class="lang-label">Francia <em>FR</em></span></button>
-  <button class="lang-btn" onclick="setLang('it', this)">🇮🇹 <span class="lang-label">Italia <em>IT</em></span></button>
+  <button class="lang-btn active" onclick="setLang('es', this)">🇲🇽 <span class="lang-label"><em>ES</em></span></button>
+  <button class="lang-btn" onclick="setLang('en', this)">🇺🇸 <span class="lang-label"><em>EN</em></span></button>
+  <button class="lang-btn" onclick="setLang('fr', this)">🇫🇷 <span class="lang-label"><em>FR</em></span></button>
+  <button class="lang-btn" onclick="setLang('it', this)">🇮🇹 <span class="lang-label"><em>IT</em></span></button>
 </div>
 
 <div class="card">
@@ -369,7 +370,7 @@
     <div class="pet-row">
       <span class="pet-icon">🏠</span>
       <span class="pet-key" id="info-home-key">Casa</span>
-      <span class="pet-val" id="info-home-val">Cto. Acueducto M4 L7, Marsella 3, Playa del Carmen</span>
+      <span class="pet-val" id="info-home-val" style="text-align:left;line-height:1.4;">Acueducto M4 L7, Marsella 3, Playa del Carmen, México</span>
     </div>
   </div>
 
@@ -397,7 +398,7 @@
       ageKey: "Edad", ageVal: "+10 años",
       bdayKey: "Nació", bdayVal: "05/Ago/2013",
       sexKey: "Sexo", sexVal: "Macho esterilizado",
-      homeKey: "Casa", homeVal: "Cto. Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
+      homeKey: "Casa", homeVal: "Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
     },
     en: {
       headline: "You found me!",
@@ -417,7 +418,7 @@
       colorKey: "Color", colorVal: "White",
       bdayKey: "Born", bdayVal: "05/Aug/2013",
       sexKey: "Sex", sexVal: "Neutered male",
-      homeKey: "Home", homeVal: "Cto. Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
+      homeKey: "Home", homeVal: "Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
     },
     fr: {
       headline: "Tu m'as trouvé !",
@@ -437,7 +438,7 @@
       colorKey: "Couleur", colorVal: "Blanc",
       bdayKey: "Né le", bdayVal: "05/Aoû/2013",
       sexKey: "Sexe", sexVal: "Mâle castré",
-      homeKey: "Maison", homeVal: "Cto. Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
+      homeKey: "Maison", homeVal: "Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
     },
     it: {
       headline: "Mi hai trovato!",
@@ -457,7 +458,7 @@
       colorKey: "Colore", colorVal: "Bianco",
       bdayKey: "Nato il", bdayVal: "05/Ago/2013",
       sexKey: "Sesso", sexVal: "Maschio castrato",
-      homeKey: "Casa", homeVal: "Cto. Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
+      homeKey: "Casa", homeVal: "Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
     }
   };
 
