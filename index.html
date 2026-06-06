@@ -19,6 +19,7 @@
     font-family: 'Lato', sans-serif;
   }
 
+  /* Language bar */
   .lang-bar {
     display: flex;
     gap: 8px;
@@ -44,26 +45,6 @@
     gap: 5px;
   }
 
-  .lang-label {
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
-    font-style: normal;
-  }
-
-  .lang-label em {
-    font-style: normal;
-    font-size: 0.65rem;
-    opacity: 0.6;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-  }
-
-  .lang-btn.active .lang-label em,
-  .lang-btn:hover .lang-label em {
-    opacity: 0.85;
-  }
-
   .lang-btn:hover {
     background: rgba(201,168,76,0.15);
     border-color: rgba(201,168,76,0.4);
@@ -76,6 +57,7 @@
     color: #f0d080;
   }
 
+  /* Card */
   .card {
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(201,168,76,0.25);
@@ -88,16 +70,15 @@
     box-shadow: 0 24px 80px rgba(0,0,0,0.5);
   }
 
-  .emoji-big {
-    font-size: 4rem;
-    display: block;
-    margin-bottom: 6px;
-    animation: bounce 2s ease-in-out infinite;
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+  .dog-photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 3px solid #c9a84c;
+    box-shadow: 0 0 0 4px rgba(201,168,76,0.2), 0 8px 24px rgba(0,0,0,0.4);
+    margin-bottom: 10px;
   }
 
   .headline {
@@ -106,7 +87,6 @@
     color: #c9a84c;
     letter-spacing: 0.05em;
     margin-bottom: 4px;
-    transition: opacity 0.2s;
   }
 
   .dog-name {
@@ -140,11 +120,11 @@
     color: rgba(255,255,255,0.75);
     line-height: 1.7;
     margin-bottom: 28px;
-    transition: opacity 0.2s;
   }
 
   .message strong { color: #ffffff; }
 
+  /* Buttons */
   .buttons {
     display: flex;
     flex-direction: column;
@@ -154,14 +134,6 @@
   .buttons-row {
     display: flex;
     gap: 10px;
-  }
-
-  .buttons-row .btn {
-    flex: 1;
-    justify-content: center;
-    gap: 8px;
-    padding: 16px 10px;
-    font-size: 0.95rem;
   }
 
   .btn {
@@ -178,9 +150,16 @@
     letter-spacing: 0.03em;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
     cursor: pointer;
+    border: none;
   }
 
   .btn:active { transform: scale(0.97); }
+
+  .buttons-row .btn {
+    flex: 1;
+    padding: 16px 10px;
+    font-size: 0.95rem;
+  }
 
   .btn-call {
     background: linear-gradient(135deg, #c9a84c, #f0d080);
@@ -188,10 +167,7 @@
     box-shadow: 0 8px 24px rgba(201,168,76,0.35);
   }
 
-  .btn-call:hover {
-    box-shadow: 0 12px 32px rgba(201,168,76,0.5);
-    transform: translateY(-2px);
-  }
+  .btn-call:hover { box-shadow: 0 12px 32px rgba(201,168,76,0.5); transform: translateY(-2px); }
 
   .btn-whatsapp {
     background: linear-gradient(135deg, #25d366, #128c7e);
@@ -199,66 +175,27 @@
     box-shadow: 0 8px 24px rgba(37,211,102,0.3);
   }
 
-  .btn-whatsapp:hover {
-    box-shadow: 0 12px 32px rgba(37,211,102,0.45);
-    transform: translateY(-2px);
-  }
+  .btn-whatsapp:hover { box-shadow: 0 12px 32px rgba(37,211,102,0.45); transform: translateY(-2px); }
 
   .btn-icon { font-size: 1.3rem; flex-shrink: 0; }
 
   .btn-location {
     background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.15) !important;
     color: rgba(255,255,255,0.75);
-    box-shadow: none;
     font-size: 0.9rem;
   }
 
-  .btn-location:hover {
-    background: rgba(255,255,255,0.12);
-    border-color: rgba(255,255,255,0.3);
-    transform: translateY(-2px);
-    color: #fff;
-  }
+  .btn-location:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3) !important; transform: translateY(-2px); color: #fff; }
+  .btn-location.loading { opacity: 0.6; pointer-events: none; }
+  .btn-location.success { border-color: #25d366 !important; color: #25d366; }
+  .btn-location.denied { border-color: rgba(255,100,100,0.5) !important; color: rgba(255,120,120,0.8); }
 
-  .btn-location.loading {
-    opacity: 0.6;
-    pointer-events: none;
-  }
-
-  .btn-location.success {
-    border-color: #25d366;
-    color: #25d366;
-  }
-
-  .btn-location.denied {
-    border-color: rgba(255,100,100,0.5);
-    color: rgba(255,120,120,0.8);
-  }
-
-  .btn-text small {
-    font-size: 0.65rem;
-    font-weight: 400;
-    opacity: 0.75;
-    letter-spacing: 0.05em;
-  }
-
-  .location {
-    margin-top: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    font-size: 0.72rem;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.1em;
-  }
-
+  /* Pet info */
   .pet-info {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 20px;
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(201,168,76,0.15);
     border-radius: 14px;
@@ -267,17 +204,12 @@
 
   .pet-row {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
     font-size: 0.83rem;
   }
 
-  .pet-icon {
-    font-size: 1rem;
-    width: 20px;
-    text-align: center;
-    flex-shrink: 0;
-  }
+  .pet-icon { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; margin-top: 1px; }
 
   .pet-key {
     color: rgba(201,168,76,0.7);
@@ -287,23 +219,14 @@
     text-transform: uppercase;
     width: 52px;
     flex-shrink: 0;
+    padding-top: 2px;
   }
 
   .pet-val {
     color: rgba(255,255,255,0.85);
     font-weight: 400;
     text-align: left;
-  }
-
-  .dog-photo {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center top;
-    border: 3px solid #c9a84c;
-    box-shadow: 0 0 0 4px rgba(201,168,76,0.2), 0 8px 24px rgba(0,0,0,0.4);
-    margin-bottom: 10px;
+    line-height: 1.4;
   }
 
   .btn-directions {
@@ -311,7 +234,7 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    margin-top: 10px;
+    margin-top: 6px;
     padding: 10px 16px;
     border-radius: 10px;
     background: rgba(201,168,76,0.12);
@@ -325,10 +248,7 @@
     transition: all 0.2s ease;
   }
 
-  .btn-directions:hover {
-    background: rgba(201,168,76,0.22);
-    border-color: #c9a84c;
-  }
+  .btn-directions:hover { background: rgba(201,168,76,0.22); border-color: #c9a84c; }
 
   .paw-footer {
     margin-top: 28px;
@@ -341,10 +261,10 @@
 <body>
 
 <div class="lang-bar">
-  <button class="lang-btn active" onclick="setLang('es', this)">🇲🇽 <span class="lang-label"><em>ES</em></span></button>
-  <button class="lang-btn" onclick="setLang('en', this)">🇺🇸 <span class="lang-label"><em>EN</em></span></button>
-  <button class="lang-btn" onclick="setLang('fr', this)">🇫🇷 <span class="lang-label"><em>FR</em></span></button>
-  <button class="lang-btn" onclick="setLang('it', this)">🇮🇹 <span class="lang-label"><em>IT</em></span></button>
+  <button class="lang-btn active" onclick="setLang('es', this)">🇲🇽 <em>ES</em></button>
+  <button class="lang-btn" onclick="setLang('en', this)">🇺🇸 <em>EN</em></button>
+  <button class="lang-btn" onclick="setLang('fr', this)">🇫🇷 <em>FR</em></button>
+  <button class="lang-btn" onclick="setLang('it', this)">🇮🇹 <em>IT</em></button>
 </div>
 
 <div class="card">
@@ -366,8 +286,7 @@
         <span class="btn-icon">📞</span>
         <span id="btn-call-label">Llamar</span>
       </a>
-
-      <a class="btn btn-whatsapp" href="https://wa.me/529841765271?text=Hola%2C%20encontr%C3%A9%20a%20Mathias%20%F0%9F%90%BE">
+      <a class="btn btn-whatsapp" id="btn-wa" href="https://wa.me/529841765271?text=Hola%2C%20encontr%C3%A9%20a%20Mathias%20%F0%9F%90%BE%0AEst%C3%A1%20conmigo%20y%20est%C3%A1%20bien.%0APor%20favor%20cont%C3%A1ctame%20a%20este%20n%C3%BAmero">
         <span class="btn-icon">💬</span>
         <span id="btn-wa-label">WhatsApp</span>
       </a>
@@ -377,6 +296,11 @@
       <span class="btn-icon" id="btn-loc-icon">📍</span>
       <span id="btn-loc-label">Enviar mi ubicación</span>
     </button>
+
+    <a class="btn btn-whatsapp" id="btn-send-loc" style="display:none;" href="#" target="_blank">
+      <span class="btn-icon">✅</span>
+      <span id="btn-send-loc-label">Enviar ubicación por WhatsApp</span>
+    </a>
   </div>
 
   <div class="divider" style="margin-top:24px;"></div>
@@ -400,9 +324,9 @@
     <div class="pet-row">
       <span class="pet-icon">🏠</span>
       <span class="pet-key" id="info-home-key">Casa</span>
-      <span class="pet-val" id="info-home-val" style="text-align:left;line-height:1.4;">Acueducto M4 L7, Marsella 3, Playa del Carmen, México</span>
+      <span class="pet-val">Acueducto M4 L7, Marsella 3, Playa del Carmen, México</span>
     </div>
-    <a class="btn-directions" id="btn-directions" href="https://www.google.com/maps/dir/?api=1&destination=20.6791509,-87.0712413" target="_blank">
+    <a class="btn-directions" href="https://www.google.com/maps/dir/?api=1&destination=20.6791509,-87.0712413" target="_blank">
       🗺️ <span id="btn-directions-label">Cómo llegar</span>
     </a>
   </div>
@@ -421,13 +345,14 @@
       loc: "Enviar mi ubicación",
       locLoading: "Obteniendo ubicación...",
       locDenied: "Permiso denegado",
-      locReady: "Ubicación lista — abre WhatsApp",
+      locReady: "Ubicación obtenida ✓",
+      locSendLabel: "Enviar ubicación por WhatsApp",
       breed: "Maltés",
       colorKey: "Color", colorVal: "Blanco",
       bdayKey: "Nació", bdayVal: "05/Ago/2013",
       sexKey: "Sexo", sexVal: "Macho esterilizado",
-      directionsLabel: "Cómo llegar",
-      homeKey: "Casa"
+      homeKey: "Casa",
+      directionsLabel: "Cómo llegar"
     },
     en: {
       headline: "You found me!",
@@ -438,13 +363,14 @@
       loc: "Send my location",
       locLoading: "Getting location...",
       locDenied: "Permission denied",
-      locReady: "Location ready — open WhatsApp",
+      locReady: "Location obtained ✓",
+      locSendLabel: "Send location via WhatsApp",
       breed: "Maltese",
       colorKey: "Color", colorVal: "White",
       bdayKey: "Born", bdayVal: "05/Aug/2013",
       sexKey: "Sex", sexVal: "Neutered male",
-      directionsLabel: "Get directions",
-      homeKey: "Home"
+      homeKey: "Home",
+      directionsLabel: "Get directions"
     },
     fr: {
       headline: "Tu m'as trouvé !",
@@ -455,13 +381,14 @@
       loc: "Envoyer ma position",
       locLoading: "Localisation en cours...",
       locDenied: "Permission refusée",
-      locReady: "Position prête — ouvre WhatsApp",
+      locReady: "Position obtenue ✓",
+      locSendLabel: "Envoyer la position par WhatsApp",
       breed: "Maltais",
       colorKey: "Couleur", colorVal: "Blanc",
       bdayKey: "Né le", bdayVal: "05/Aoû/2013",
       sexKey: "Sexe", sexVal: "Mâle castré",
-      directionsLabel: "Itinéraire",
-      homeKey: "Maison"
+      homeKey: "Maison",
+      directionsLabel: "Itinéraire"
     },
     it: {
       headline: "Mi hai trovato!",
@@ -472,13 +399,14 @@
       loc: "Invia la mia posizione",
       locLoading: "Ottenendo posizione...",
       locDenied: "Permesso negato",
-      locReady: "Posizione pronta — apri WhatsApp",
+      locReady: "Posizione ottenuta ✓",
+      locSendLabel: "Invia posizione via WhatsApp",
       breed: "Maltese",
       colorKey: "Colore", colorVal: "Bianco",
       bdayKey: "Nato il", bdayVal: "05/Ago/2013",
       sexKey: "Sesso", sexVal: "Maschio castrato",
-      directionsLabel: "Come arrivare",
-      homeKey: "Casa"
+      homeKey: "Casa",
+      directionsLabel: "Come arrivare"
     }
   };
 
@@ -494,7 +422,6 @@
     document.getElementById('btn-call-label').textContent = t.call;
     document.getElementById('btn-wa-label').textContent = t.wa;
     document.getElementById('btn-loc-label').textContent = locCoords ? t.locReady : t.loc;
-
     document.getElementById('breed-label').textContent = t.breed;
     document.getElementById('info-color-key').textContent = t.colorKey;
     document.getElementById('info-color-val').textContent = t.colorVal;
@@ -505,7 +432,12 @@
     document.getElementById('info-home-key').textContent = t.homeKey;
     document.getElementById('btn-directions-label').textContent = t.directionsLabel;
 
-    document.querySelector('.btn-whatsapp').href = `https://wa.me/529841765271?text=${t.waMsg}`;
+    if (locCoords) {
+      document.getElementById('btn-send-loc-label').textContent = t.locSendLabel;
+    }
+
+    // Update WhatsApp button href (by id, not class, to avoid touching btn-send-loc)
+    document.getElementById('btn-wa').href = `https://wa.me/529841765271?text=${t.waMsg}`;
 
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -518,9 +450,7 @@
     const t = translations[currentLang];
 
     if (locCoords) {
-      const mapsLink = `https://maps.google.com/?q=${locCoords.lat},${locCoords.lng}`;
-      const fullMsg = `${t.waMsg}%0A%0A📍%20${encodeURIComponent(mapsLink)}`;
-      window.open(`https://wa.me/529841765271?text=${fullMsg}`, '_blank');
+      document.getElementById('btn-send-loc').style.display = 'flex';
       return;
     }
 
@@ -538,14 +468,21 @@
 
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        locCoords = { lat: pos.coords.latitude.toFixed(6), lng: pos.coords.longitude.toFixed(6) };
+        locCoords = {
+          lat: pos.coords.latitude.toFixed(6),
+          lng: pos.coords.longitude.toFixed(6)
+        };
         btn.classList.remove('loading');
         btn.classList.add('success');
         icon.textContent = '✅';
         label.textContent = translations[currentLang].locReady;
+
         const mapsLink = `https://maps.google.com/?q=${locCoords.lat},${locCoords.lng}`;
-        const fullMsg = `${translations[currentLang].waMsg}%0A%0A📍%20${encodeURIComponent(mapsLink)}`;
-        window.open(`https://wa.me/529841765271?text=${fullMsg}`, '_blank');
+        const fullMsg = `${translations[currentLang].waMsg}%0A%0A%F0%9F%93%8D%20${encodeURIComponent(mapsLink)}`;
+        const sendBtn = document.getElementById('btn-send-loc');
+        sendBtn.href = `https://wa.me/529841765271?text=${fullMsg}`;
+        sendBtn.style.display = 'flex';
+        document.getElementById('btn-send-loc-label').textContent = translations[currentLang].locSendLabel;
       },
       () => {
         btn.classList.remove('loading');
