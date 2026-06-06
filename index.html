@@ -241,6 +241,46 @@
     letter-spacing: 0.1em;
   }
 
+  .pet-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+
+  .pet-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.83rem;
+  }
+
+  .pet-icon {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .pet-key {
+    color: rgba(201,168,76,0.7);
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    width: 52px;
+    flex-shrink: 0;
+  }
+
+  .pet-val {
+    color: rgba(255,255,255,0.85);
+    font-weight: 400;
+  }
+
   .paw-footer {
     margin-top: 28px;
     font-size: 1.4rem;
@@ -262,7 +302,7 @@
   <span class="emoji-big">🐶</span>
   <div class="headline" id="headline">¡Me encontraste!</div>
   <div class="dog-name">Mathias</div>
-  <div class="breed">Cruza de Maltés</div>
+  <div class="breed" id="breed-label">Maltés</div>
 
   <div class="divider"></div>
 
@@ -297,8 +337,29 @@
     </button>
   </div>
 
-  <div class="location">
-    📍 Playa del Carmen, Q. Roo
+  <div class="divider" style="margin-top:24px;"></div>
+
+  <div class="pet-info">
+    <div class="pet-row">
+      <span class="pet-icon">🎨</span>
+      <span class="pet-key" id="info-color-key">Color</span>
+      <span class="pet-val" id="info-color-val">Blanco</span>
+    </div>
+    <div class="pet-row">
+      <span class="pet-icon">🐣</span>
+      <span class="pet-key" id="info-bday-key">Nació</span>
+      <span class="pet-val" id="info-bday-val">05/Ago/2013</span>
+    </div>
+    <div class="pet-row">
+      <span class="pet-icon">⚧</span>
+      <span class="pet-key" id="info-sex-key">Sexo</span>
+      <span class="pet-val" id="info-sex-val">Macho esterilizado</span>
+    </div>
+    <div class="pet-row">
+      <span class="pet-icon">🏠</span>
+      <span class="pet-key" id="info-home-key">Casa</span>
+      <span class="pet-val" id="info-home-val">Cto. Acueducto M4 L7, Marsella 3, Playa del Carmen</span>
+    </div>
   </div>
 
   <div class="paw-footer">🐾 🐾 🐾</div>
@@ -319,7 +380,13 @@
       locDenied: "Permiso denegado",
       locDeniedSub: "Activa ubicación en tu navegador",
       locReady: "Ubicación lista — abre WhatsApp",
-      locReadySub: "Toca de nuevo para enviar"
+      locReadySub: "Toca de nuevo para enviar",
+      breed: "Maltés",
+      colorKey: "Color", colorVal: "Blanco",
+      ageKey: "Edad", ageVal: "+10 años",
+      bdayKey: "Nació", bdayVal: "05/Ago/2013",
+      sexKey: "Sexo", sexVal: "Macho esterilizado",
+      homeKey: "Casa", homeVal: "Cto. Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
     },
     en: {
       headline: "You found me!",
@@ -334,7 +401,12 @@
       locDenied: "Permission denied",
       locDeniedSub: "Enable location in your browser",
       locReady: "Location ready — open WhatsApp",
-      locReadySub: "Tap again to send"
+      locReadySub: "Tap again to send",
+      breed: "Maltese",
+      colorKey: "Color", colorVal: "White",
+      bdayKey: "Born", bdayVal: "05/Aug/2013",
+      sexKey: "Sex", sexVal: "Neutered male",
+      homeKey: "Home", homeVal: "Cto. Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
     },
     fr: {
       headline: "Tu m'as trouvé !",
@@ -349,7 +421,12 @@
       locDenied: "Permission refusée",
       locDeniedSub: "Active la localisation dans ton navigateur",
       locReady: "Position prête — ouvre WhatsApp",
-      locReadySub: "Appuie à nouveau pour envoyer"
+      locReadySub: "Appuie à nouveau pour envoyer",
+      breed: "Maltais",
+      colorKey: "Couleur", colorVal: "Blanc",
+      bdayKey: "Né le", bdayVal: "05/Aoû/2013",
+      sexKey: "Sexe", sexVal: "Mâle castré",
+      homeKey: "Maison", homeVal: "Cto. Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
     },
     it: {
       headline: "Mi hai trovato!",
@@ -364,7 +441,12 @@
       locDenied: "Permesso negato",
       locDeniedSub: "Attiva la posizione nel browser",
       locReady: "Posizione pronta — apri WhatsApp",
-      locReadySub: "Tocca di nuovo per inviare"
+      locReadySub: "Tocca di nuovo per inviare",
+      breed: "Maltese",
+      colorKey: "Colore", colorVal: "Bianco",
+      bdayKey: "Nato il", bdayVal: "05/Ago/2013",
+      sexKey: "Sesso", sexVal: "Maschio castrato",
+      homeKey: "Casa", homeVal: "Cto. Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
     }
   };
 
@@ -381,6 +463,17 @@
     document.getElementById('btn-wa-sub').textContent = t.waSub;
     document.getElementById('btn-loc-label').textContent = locCoords ? t.locReady : t.loc;
     document.getElementById('btn-loc-sub').textContent = locCoords ? t.locReadySub : t.locSub;
+
+    // Pet info
+    document.getElementById('breed-label').textContent = t.breed;
+    document.getElementById('info-color-key').textContent = t.colorKey;
+    document.getElementById('info-color-val').textContent = t.colorVal;
+    document.getElementById('info-bday-key').textContent = t.bdayKey;
+    document.getElementById('info-bday-val').textContent = t.bdayVal;
+    document.getElementById('info-sex-key').textContent = t.sexKey;
+    document.getElementById('info-sex-val').textContent = t.sexVal;
+    document.getElementById('info-home-key').textContent = t.homeKey;
+    document.getElementById('info-home-val').textContent = t.homeVal;
 
     // Update WhatsApp message in link
     const waBtn = document.querySelector('.btn-whatsapp');
