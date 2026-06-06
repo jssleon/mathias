@@ -306,6 +306,30 @@
     margin-bottom: 10px;
   }
 
+  .btn-directions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.35);
+    color: #f0d080;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-directions:hover {
+    background: rgba(201,168,76,0.22);
+    border-color: #c9a84c;
+  }
+
   .paw-footer {
     margin-top: 28px;
     font-size: 1.4rem;
@@ -378,6 +402,9 @@
       <span class="pet-key" id="info-home-key">Casa</span>
       <span class="pet-val" id="info-home-val" style="text-align:left;line-height:1.4;">Acueducto M4 L7, Marsella 3, Playa del Carmen, México</span>
     </div>
+    <a class="btn-directions" id="btn-directions" href="https://www.google.com/maps/dir/?api=1&destination=20.6791509,-87.0712413" target="_blank">
+      🗺️ <span id="btn-directions-label">Cómo llegar</span>
+    </a>
   </div>
 
   <div class="paw-footer">🐾 🐾 🐾</div>
@@ -404,6 +431,7 @@
       ageKey: "Edad", ageVal: "+10 años",
       bdayKey: "Nació", bdayVal: "05/Ago/2013",
       sexKey: "Sexo", sexVal: "Macho esterilizado",
+      directionsLabel: "Cómo llegar",
       homeKey: "Casa", homeVal: "Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
     },
     en: {
@@ -424,6 +452,7 @@
       colorKey: "Color", colorVal: "White",
       bdayKey: "Born", bdayVal: "05/Aug/2013",
       sexKey: "Sex", sexVal: "Neutered male",
+      directionsLabel: "Get directions",
       homeKey: "Home", homeVal: "Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
     },
     fr: {
@@ -444,6 +473,7 @@
       colorKey: "Couleur", colorVal: "Blanc",
       bdayKey: "Né le", bdayVal: "05/Aoû/2013",
       sexKey: "Sexe", sexVal: "Mâle castré",
+      directionsLabel: "Itinéraire",
       homeKey: "Maison", homeVal: "Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
     },
     it: {
@@ -464,9 +494,8 @@
       colorKey: "Colore", colorVal: "Bianco",
       bdayKey: "Nato il", bdayVal: "05/Ago/2013",
       sexKey: "Sesso", sexVal: "Maschio castrato",
+      directionsLabel: "Come arrivare",
       homeKey: "Casa", homeVal: "Acueducto M4 L7, Marsella 3, Playa del Carmen, México"
-    }
-  };
 
   let currentLang = 'es';
   let locCoords = null;
@@ -489,6 +518,7 @@
     document.getElementById('info-sex-key').textContent = t.sexKey;
     document.getElementById('info-sex-val').textContent = t.sexVal;
     document.getElementById('info-home-key').textContent = t.homeKey;
+    document.getElementById('btn-directions-label').textContent = t.directionsLabel;
 
     // Update WhatsApp message in link
     const waBtn = document.querySelector('.btn-whatsapp');
