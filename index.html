@@ -478,9 +478,7 @@
     document.getElementById('message').innerHTML = t.message;
     document.getElementById('btn-call-label').textContent = t.call;
     document.getElementById('btn-wa-label').textContent = t.wa;
-    document.getElementById('btn-wa-sub').textContent = t.waSub;
     document.getElementById('btn-loc-label').textContent = locCoords ? t.locReady : t.loc;
-    document.getElementById('btn-loc-sub').textContent = locCoords ? t.locReadySub : t.locSub;
 
     // Pet info
     document.getElementById('breed-label').textContent = t.breed;
@@ -491,7 +489,6 @@
     document.getElementById('info-sex-key').textContent = t.sexKey;
     document.getElementById('info-sex-val').textContent = t.sexVal;
     document.getElementById('info-home-key').textContent = t.homeKey;
-    document.getElementById('info-home-val').textContent = t.homeVal;
 
     // Update WhatsApp message in link
     const waBtn = document.querySelector('.btn-whatsapp');
@@ -506,7 +503,6 @@
     const t = translations[currentLang];
     const btn = document.getElementById('btn-location');
     const label = document.getElementById('btn-loc-label');
-    const sub = document.getElementById('btn-loc-sub');
     const icon = document.getElementById('btn-loc-icon');
 
     // If coords already obtained, go straight to WhatsApp
@@ -522,15 +518,13 @@
     // Request location
     btn.classList.add('loading');
     icon.textContent = '⏳';
-    label.textContent = t.locLoading;
-    sub.textContent = '';
+    label.textContent = translations[currentLang].locLoading;
 
     if (!navigator.geolocation) {
       btn.classList.remove('loading');
       btn.classList.add('denied');
       icon.textContent = '❌';
-      label.textContent = t.locDenied;
-      sub.textContent = t.locDeniedSub;
+      label.textContent = translations[currentLang].locDenied;
       return;
     }
 
@@ -540,8 +534,7 @@
         btn.classList.remove('loading');
         btn.classList.add('success');
         icon.textContent = '✅';
-        label.textContent = t.locReady;
-        sub.textContent = t.locReadySub;
+        label.textContent = translations[currentLang].locReady;
 
         // Auto-open WhatsApp after getting location
         const mapsLink = `https://maps.google.com/?q=${locCoords.lat},${locCoords.lng}`;
@@ -553,8 +546,7 @@
         btn.classList.remove('loading');
         btn.classList.add('denied');
         icon.textContent = '❌';
-        label.textContent = t.locDenied;
-        sub.textContent = t.locDeniedSub;
+        label.textContent = translations[currentLang].locDenied;
       },
       { timeout: 10000, enableHighAccuracy: true }
     );
